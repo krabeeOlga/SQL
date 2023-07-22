@@ -65,10 +65,11 @@ ALTER TABLE posts ADD FOREIGN KEY (user_id) REFERENCES clients(id);
 -- №2.	Без оператора JOIN, верните заголовок публикации, текст с описанием, идентификатор клиента, опубликовавшего публикацию и логин данного клиента.
 
 SELECT p.title, p.full_text, p.user_id, c.login
-FROM posts p, clients c;
+FROM posts p, clients c
+WHERE p.user_id = c.id;
 
 -- №3.	Выполните поиск  по публикациям, автором котоырх является клиент "Mikle".
 
 SELECT p.title, p.full_text, p.user_id, c.login
 FROM posts p, clients c
-WHERE c.login = 'Mikle';
+WHERE c.login = 'Mikle' and p.user_id = c.id;

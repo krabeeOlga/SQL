@@ -41,7 +41,7 @@ WHERE ProductName LIKE "%Galaxy%";
 
 SELECT *
 FROM Mobile_Phones
-WHERE ProductName REGEXP '[1234567890]';
+WHERE ProductName REGEXP '[0-9]';
 
 SELECT *
 FROM Mobile_Phones
