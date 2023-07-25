@@ -293,9 +293,10 @@ INSERT INTO `profiles` (user_id, gender, birthday, photo_id, hometown) VALUES
 SELECT 
 	CONCAT(u.firstname, " ", u.lastname) AS username,
     COUNT(m.filename) AS Quantity_of_docs     
-FROM users u, media m
+FROM users u, media m, media_types mt
 WHERE u.id = m.user_id 
-	AND (m.filename LIKE "%doc" OR m.filename LIKE "%docx" OR m.filename LIKE "%html") 
+	and m.media_type_id = mt.id
+    and mt.name_type = 'Post'
 GROUP BY u.id;
 
 -- Посчитать лайки для документов, которые выложил каждый пользователь (моих медиа)
